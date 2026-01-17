@@ -1,20 +1,70 @@
 # AI Engineering Projects Overview
 
-This repository contains five hands-on projects completed over five weeks, followed by a capstone in week six. The first five projects build capability with large language models, retrieval, tool use, research workflows, and multimodality. Week six is a capstone where you design your own system, tool, or startup idea based on your learnings. The instructions below are generic and apply to all projects. Each project also includes additional instructions specific to that project.
+This repository contains five hands-on projects completed over five weeks. The projects build capability with large language models, retrieval, tool use, research workflows, and multimodality. Week six is a capstone where you design your own system, tool, or startup idea based on your learnings.
 
-Each week, a new project is added to the repo at a specific release date and time. The weekly release includes the notebook, data, and environment file.
+Each week, the new project folder is released with:
+- a notebook (primary workflow)
+- supporting data
+- an `environment.yml` for reproducible setup
+
+## Project index
+
+| Week | Project | What you build | Main topics |
+|---|---|---|---|
+| 1 | LLM Playground | Notebook playground for prompting + decoding | tokens, decoding, prompt patterns |
+| 2 | Customer Support Chatbot | RAG chatbot + small UI | chunking, embeddings, retrieval, RAG |
+| 3 | Ask-the-Web Agent | Tool-using web QA agent | tool calling, planning loop, schemas |
+| 4 | Deep Research System | Multi-step research workflow | evidence gathering, synthesis, multi-agent |
+| 5 | Multimodal Agent | Text + image/video generation agent + UI | routing, image gen, video gen |
+| 6 | Capstone | Your own system | design + build + demo |
+
+Release Schedule: Each week, a new project folder is added to this repo containing the notebook, data, and environment file.
+
+## Repo structure
+
+Each week has its own folder:
+- `project_1/`
+- `project_2/`
+- `project_3/`
+- `project_4/`
+- `project_5/`
+
+Inside each folder you will typically find:
+- `project.ipynb`
+- `environment.yml` (or `requirements.txt`)
+- optional: `data/`
+- optional: `app/` or `streamlit.py` for demos
+
 
 ## Quick start
 
-You can run the projects either on **Google Colab** (no local setup required) or **locally** (using Conda environments for reproducibility).
+### Step 1: Get the code
 
-### Option A: Run in Google Colab
-1. Upload the notebook for the current week to Colab.
-2. If needed, add your API tokens using `os.environ[...] = "value"`.
-3. Ensure that any local file paths are adjusted for Colab.
+```bash
+git clone <REPO_URL>
+cd <REPO_NAME>
+```
+When a new week is released:
+```bash
+git pull
+```
 
-### Option B: Run locally with Conda
-Each project comes with an `environment.yml` file that specifies its dependencies. This ensures consistent environments.
+### Step 2: Open the project in your IDE
+Open your IDE of choice (VS Code, Cursor, Antigravity), then open the repo folder <REPO_NAME>.
+
+### Step 3: Work on the current week
+Open the instructions for the current week in the repo (usually the notebook inside a `project_X/` folder), then follow the steps in order.
+
+You can run the projects either on **Google Colab** (no local setup required) or **locally** (using Conda environments for reproducibility or uv).
+
+#### Option A: Run in Google Colab
+1. Open the notebook for the current week (upload to Colab or open via link if provided).
+2. Install dependencies if needed.
+3. Set any required API keys if needed.
+4. Adjust file paths for Colab (use /content/...).
+
+#### Option B: Run locally with Conda
+Each project includes an `environment.yml` to keep dependencies consistent.
 
 1. Install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/download).
 2. Create and activate the environment from the provided YAML file:
@@ -28,29 +78,33 @@ Each project comes with an `environment.yml` file that specifies its dependencie
    jupyter notebook
    ```
 
+#### Option C: Run locally with uv (Blazing Fast)
+uv is a modern Python package installer written in Rust. It is significantly faster than Conda or Pip and acts as a drop-in replacement. If you find Conda slow to solve environments, use this.
+1. Install uv (if you haven't already):
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   ```
+2. Create a requirements.txt file and list all dependecies for that project. You can find these in the provided `environment.yml`
+2. Create a virtual environment and install dependencies:
+   ```bash
+   uv venv --python 3.11
+   source .venv/bin/activate
+   uv pip install -r requirements.txt
+   ```
+
 **Recommendation:** Use Colab for projects 1 and 5, and local development for projects 2, 3, and 4.
 
-## Accounts and keys you may need
 
-The projects are designed so they do not require specific API keys or tokens by default. However, they are flexible, meaning you can switch to different LLMs, models, and systems. Depending on what you choose to experiment with, you may need to set up API keys or tokens from certain providers.  
-
-Possible API keys you might need:
-- `OPENAI_API_KEY` for OpenAI models  
-- `ANTHROPIC_API_KEY` for Claude models  
-- `GOOGLE_API_KEY` for Gemini models  
-- `HUGGINGFACEHUB_API_TOKEN` for Hugging Face hosted models and datasets  
-- `TAVILY_API_KEY` or `SERPAPI_API_KEY` for web search tools  
-- `PINECONE_API_KEY`, or alternatives if using remote vector stores  
 
 ## Project expectations
+- Each project is a guided template with sections marked “your code here”.
+- There are multiple valid implementations. You can deviate from the default stack and experiment.
+- No submission is required.
+- In live sessions, we will walk through one reference implementation and discuss trade-offs.
 
-- Projects are designed flexibly. They guide you step by step and provide the workflow. You will need to implement the sections marked with "your code here".  
-- There are multiple ways to implement each section. Feel free to deviate from the provided template and experiment with different algorithms, models, and systems.  
-- No submission is required. In the live deep-dive sessions, we will review each project in detail and show one possible implementation.  
 
-## Troubleshooting
-
-- Post questions in the corresponding Q/A space. You are also welcome to share your thoughts, opinions, and interesting findings in the same space.  
+## Getting Help
+Use the cohort Q/A space for questions and debugging. You are also welcome to share your thoughts, opinions, and interesting findings in the same space.  
 
 ## Weekly projects
 
@@ -105,7 +159,7 @@ A project to build an agent that combines textual question answering with image 
 
 ### Week 6: Capstone Project
 
-**Purpose:** Design and build your own system based on what you learned in weeks 1 to 5. This can be a product prototype, an internal tool, a research workflow, or the first step toward a startup idea. The hope is that some projects will continue after the cohort, using the connections and community built here.
+Design your own system! Use the patterns from Weeks 1-5 to build a prototype, internal tool, or research workflow.
 
 ## Reference docs and readings
 
